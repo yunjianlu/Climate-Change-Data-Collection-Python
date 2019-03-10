@@ -8,13 +8,13 @@ import time
 
 
 
-
 class ValiddatingURL:
-    URL = "http://www.python.org"
+    URL = "https://www.indeed.com/"
 
     def __init__(self, URL):
         if type(URL) is not str:
             raise TypeError("Not a valid URL")
+        self.URL = URL
 
 
 

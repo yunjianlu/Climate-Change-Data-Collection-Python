@@ -18,6 +18,12 @@
 import time
 import time
 import urllib.request as rq
+import urllib.request, json
+import requests
+from lxml import html, cssselect
+
+import cssselect
+
 #
 # url = "http://www.google.com"
 # tem = (str(rq.urlopen(url).read()))
@@ -27,17 +33,22 @@ import urllib.request as rq
 # print(url, (str(rq.urlopen(url).read())))
 
 
-urls = [
-    'http://www.python.org',
-    'http://www.python.org/about/'
-]
+# urls = [
+#     'https://www.indeed.com/',
+#     'http://www.python.org/about/'
+# ]
 
 
 def single_fetch():
-   start_time = time.time()
-   list(map(lambda url: print(url, len(str(rq.urlopen(url).read()))), urls))
-   end_time = time.time()
-   print(f"=== threads=1, duration={end_time-start_time} ===")
+    page = requests.get("http://www.example.com").text
+    doc = html.fromstring(page)
+    print(doc.txt)
 
+    link = doc.cssselect("a")[0]
+    print(link.text_content())
+    # More information...
+    print(link.attrib['href'])
+    # http://www.iana.org/domains/example
 
 single_fetch()
+
