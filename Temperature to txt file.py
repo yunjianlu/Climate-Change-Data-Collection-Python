@@ -3,22 +3,40 @@ This class is to open an URL, dig into it and finds the usefull data, such as te
 make a copy from it,store them into local txt file
 
 """
-import urllib.request as rq
+
+import json
+from enum import Enum
+import requests
 import time
 
+#get data from web and store it in to local file
+class OxfordDictionary:
 
+    app_id = '90aee85f'
+    app_key = 'da42e57c65311bffa5ea9db494ac245a'
 
-class ValiddatingURL:
-    URL = "https://www.indeed.com/"
+    def search(self, word):
+        language = 'en'
 
-    def __init__(self, URL):
-        if type(URL) is not str:
-            raise TypeError("Not a valid URL")
-        self.URL = URL
+        word_id = word
+        url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/' + language + '/' + word_id.lower()
 
+        r = requests.get(url, headers={'app_id': self.app_id, 'app_key': self.app_key})
+        if r.status_code != 200:
+            raise Exception(f"Something wrong due to status code { r.status_code}")
+        resp = r.json()
 
+        # rap the results into Dict Entry
+        part_of_speech =(((resp["results"][0])["lexicalEntries"])[0])["lexicalCategory"]
+        definition = (((((resp["results"][0])["lexicalEntries"])[0])["entries"][0])["senses"][0])["definitions"][0]
+        try:
+            example = ((((((resp["results"][0])["lexicalEntries"])[0])["entries"][0])["senses"][0])["examples"][0])["text"]
+        except:
+            example = None
 
-
+        dic= ""
+        dic += (word, part_of_speech, definition, example)
+        return dic
 
 
 
