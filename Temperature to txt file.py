@@ -40,11 +40,16 @@ class OxfordDictionary:
         except:
             example = None
 
+
+        for ele in resp:
+            if ele.isdigit:
+                data_for_day = ele
+
         dic= ""
         dic += (word, part_of_speech, definition, example)
         return dic
 
-    # TODO: store the data into jason file, later compute it as graphing. 
+    # TODO: store the data into jason file, later compute it as graphing.
 
 # if want to search something and store it into local.
 if "__main__" == __name__:
