@@ -12,6 +12,11 @@ import time
 #get data from web and store it in to local file
 class OxfordDictionary:
 
+    # retrive data from The world Bank
+    the_world_data_bank = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/type/var/start/end/ISO3[.ext]"
+
+
+
     app_id = '90aee85f'
     app_key = 'da42e57c65311bffa5ea9db494ac245a'
 
@@ -19,6 +24,7 @@ class OxfordDictionary:
         language = 'en'
 
         word_id = word
+
         url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/' + language + '/' + word_id.lower()
 
         r = requests.get(url, headers={'app_id': self.app_id, 'app_key': self.app_key})
@@ -38,6 +44,14 @@ class OxfordDictionary:
         dic += (word, part_of_speech, definition, example)
         return dic
 
+    # TODO: store the data into jason file, later compute it as graphing. 
+
+# if want to search something and store it into local.
+if "__main__" == __name__:
+    while True:
+        word_for_seach =  input("what word do yo want to look at")
+        dict = OxfordDictionary()
+        print(dict.search(word_for_seach))
 
 
 
