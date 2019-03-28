@@ -45,7 +45,6 @@ class OxfordDictionary:
         # for ele in resp:
         #     if ele.isdigit:
         #         self.local_data.append(ele + "\n")
-
         self.local_data += (word, part_of_speech, definition, example)
 
     # TODO: store the data into jason file, later compute it as graphing.
