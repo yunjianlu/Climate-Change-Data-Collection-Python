@@ -11,6 +11,7 @@ import time
 
 #get data from web and store it in to local file
 class OxfordDictionary:
+    local_data = []
 
     # retrive data from The world Bank
     the_world_data_bank = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/type/var/start/end/ISO3[.ext]"
@@ -40,14 +41,12 @@ class OxfordDictionary:
         except:
             example = None
 
+        #
+        # for ele in resp:
+        #     if ele.isdigit:
+        #         self.local_data.append(ele + "\n")
 
-        for ele in resp:
-            if ele.isdigit:
-                data_for_day = ele
-
-        dic= ""
-        dic += (word, part_of_speech, definition, example)
-        return dic
+        self.local_data += (word, part_of_speech, definition, example)
 
     # TODO: store the data into jason file, later compute it as graphing.
 
@@ -56,7 +55,8 @@ if "__main__" == __name__:
     while True:
         word_for_seach =  input("what word do yo want to look at")
         dict = OxfordDictionary()
-        print(dict.search(word_for_seach))
+        (dict.search(word_for_seach))
+        print(dict.local_data)
 
 
 
