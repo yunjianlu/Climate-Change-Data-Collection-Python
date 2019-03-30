@@ -17,7 +17,6 @@ class OxfordDictionary:
     the_world_data_bank = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/type/var/start/end/ISO3[.ext]"
 
 
-
     app_id = '90aee85f'
     app_key = 'da42e57c65311bffa5ea9db494ac245a'
 
@@ -41,13 +40,16 @@ class OxfordDictionary:
         except:
             example = None
 
-        #
-        # for ele in resp:
-        #     if ele.isdigit:
-        #         self.local_data.append(ele + "\n")
         self.local_data += (word, part_of_speech, definition, example)
 
-    # TODO: store the data into jason file, later compute it as graphing.
+
+
+
+
+
+
+
+
 
 # if want to search something and store it into local.
 if "__main__" == __name__:
