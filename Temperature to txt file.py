@@ -44,12 +44,16 @@ class OxfordDictionary:
 
 
 
+def local_date(number_date):
+    start_date = 0
+
+    data_list = []
+    data_list.append(number_date)
 
 
-
-
-
-
+def local_temperature(data):
+    temp_for_day = []
+    temp_for_day.append(data)
 
 # if want to search something and store it into local.
 if "__main__" == __name__:
