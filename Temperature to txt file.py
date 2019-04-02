@@ -12,6 +12,7 @@ import time
 #get data from web and store it in to local file
 class OxfordDictionary:
     local_data = []
+    data_list = []
 
     # retrive data from The world Bank
     the_world_data_bank = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/type/var/start/end/ISO3[.ext]"
@@ -32,6 +33,7 @@ class OxfordDictionary:
             raise Exception(f"Something wrong due to status code { r.status_code}")
         resp = r.json()
 
+
         # rap the results into Dict Entry
         part_of_speech =(((resp["results"][0])["lexicalEntries"])[0])["lexicalCategory"]
         definition = (((((resp["results"][0])["lexicalEntries"])[0])["entries"][0])["senses"][0])["definitions"][0]
@@ -44,21 +46,28 @@ class OxfordDictionary:
 
 
 
-def local_date(number_date):
-    if not isinstance(number_date, int):
-        raise ValueError("not stroring a number")
+    def local_date(self, number_date):
+        if not isinstance(number_date, int):
+            raise ValueError("not stroring a number")
 
-    start_date = 0
+        start_date = 0
 
-    data_list = []
-    data_list.append(number_date)
+        self.data_list.append(number_date)
 
 
-def local_temperature(data):
-    if not isinstance(data, str):
-        raise ValueError("not a str type for stroring")
-    temp_for_day = []
-    temp_for_day.append(data)
+    def local_temperature(data):
+        if not isinstance(data, str):
+            raise ValueError("not a str type for stroring")
+        temp_for_day = []
+        temp_for_day.append(data)
+
+
+    def get_temp_for_a_year(self, country, year):
+        return self.data_list
+
+
+
+
 
 # if want to search something and store it into local.
 if "__main__" == __name__:
