@@ -45,6 +45,9 @@ class OxfordDictionary:
 
 
 def local_date(number_date):
+    if not isinstance(number_date, int):
+        raise ValueError("not stroring a number")
+
     start_date = 0
 
     data_list = []
@@ -52,6 +55,8 @@ def local_date(number_date):
 
 
 def local_temperature(data):
+    if not isinstance(data, str):
+        raise ValueError("not a str type for stroring")
     temp_for_day = []
     temp_for_day.append(data)
 
