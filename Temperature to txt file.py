@@ -69,6 +69,21 @@ class OxfordDictionary:
 
 
 
+# use to store data in a linklisted.
+class FhTreeNode:
+    def __init__(self, sib = None, first_child = None, prev = None, root = None, label=None):
+        self.sib = sib
+        self.first_child = first_child
+        self.prev = prev
+        self.my_root = root
+
+        # Label to aid in visualizing the tree.
+        self.label = label
+
+
+
+
+
 # if want to search something and store it into local.
 if "__main__" == __name__:
     while True:
