@@ -71,6 +71,7 @@ class OxfordDictionary:
 
 # use to store data in a linklisted.
 class FhTreeNode:
+
     def __init__(self, sib = None, first_child = None, prev = None, root = None, label=None):
         self.sib = sib
         self.first_child = first_child
@@ -79,6 +80,10 @@ class FhTreeNode:
 
         # Label to aid in visualizing the tree.
         self.label = label
+
+    def valid_node(self,node):
+        if not isinstance(node, FhTreeNode):
+            raise ValueError("Not the same node")
 
 
 
